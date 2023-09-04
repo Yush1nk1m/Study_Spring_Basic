@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Registration</title>
+</head>
+<body>
+    <div class="container">
+
+        <form action="/members/new" method="post">  <!-- 양식이 /members/new URL로 제출되며, HTTP의 POST 방식으로 서버에 전송된다는 의미 -->
+            <div class="form-group">
+                <label for="name">이름</label>
+                <!-- 이 input 상자의 종류는 text box이고, 태그의 id는 name이며, action에 해당하는 페이지로 전달하는 parameter의 키 값을 name에 명시하였다 -->
+                <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+            </div>
+            <button type="submit">등록</button>
+        </form>
+
+    </div> <!-- container -->
+</body>
+</html>
