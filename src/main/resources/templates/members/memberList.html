@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Members' List</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>이름</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Thymeleaf 엔진이 렌더링해주는 부분 -->
+                <!--
+                MemberController의 @GetMapping("/members")이 붙은 메소드에서
+                Model의 속성으로 members를 추가함과 동시에 데이터로 회원 리스트 컨테이너를 전달해 주었다
+                -->
+                <tr th:each="member : ${members}">          <!-- members 변수의 각 원소에 대해 한 행을 생성한다 -->
+                    <!-- Member 클래스의 id, name 멤버는 private이기 때문에 property 방식에 의해 자동적으로 getter가 호출된다 -->
+                    <td th:text="${member.id}"></td>        <!-- 각 행의 첫 번째 셀은 멤버의 id이다 -->
+                    <td th:text="${member.name}"></td>      <!-- 각 행의 두 번째 셀은 멤버의 name이다 -->
+                </tr>
+                <!-- Thymeleaf 엔진이 렌더링해주는 부분 -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
