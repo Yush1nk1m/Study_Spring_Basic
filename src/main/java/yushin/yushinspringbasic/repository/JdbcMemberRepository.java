@@ -40,6 +40,7 @@ public class JdbcMemberRepository implements MemberRepository {
             } else {                // 결과로 받은 객체가 존재하지 않으면
                 throw new SQLException("ID 조회 실패");     // 쿼리가 실패했다는 의미이므로 예외 메시지를 출력한다
             }
+            return member;
         } catch (Exception e) {
             throw new IllegalStateException(e);
         } finally {
