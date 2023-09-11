@@ -33,7 +33,7 @@ class MemberServiceTest {
     public void 회원가입() {   // 테스트 코드는 과감하게 한글 메소드명을 사용하여도 된다
         // given: 주어진 데이터
         Member member = new Member();
-        member.setName("Yeonwoo");
+        member.setName("YeonwooAhn");
         
         // when: 행할 동작
         Long saveId = memberService.join(member);
