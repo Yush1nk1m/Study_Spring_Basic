@@ -24,18 +24,36 @@ public class MemberService {
 
     /* 회원 가입 메소드 */
     public Long join(Member member) {
-        // 중복 회원 검사
-        validateDuplicatedMember(member);
 
-        memberRepository.save(member);      // 리포지토리에 회원 정보 저장
-        return member.getId();              // 회원의 아이디 반환
+        long start = System.currentTimeMillis();
+
+        // 중복 회원 검사
+        try {
+            validateDuplicatedMember(member);
+
+            memberRepository.save(member);      // 리포지토리에 회원 정보 저장
+            return member.getId();              // 회원의 아이디 반환
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
     }
 
     private void validateDuplicatedMember(Member member) {
-        memberRepository.findByName(member.getName())
-                        .ifPresent(m -> {
-                            throw new IllegalStateException("이미 존재하는 회원입니다.");
-                        });
+
+        long start = System.currentTimeMillis();
+
+        try {
+            memberRepository.findByName(member.getName())
+                    .ifPresent(m -> {
+                        throw new IllegalStateException("이미 존재하는 회원입니다.");
+                    });
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("findMembers = " + timeMs + "ms");
+        }
     }
 
     /* 전체 회원 조회 */

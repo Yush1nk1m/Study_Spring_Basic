@@ -2,6 +2,7 @@ package yushin.yushinspringbasic;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import yushin.yushinspringbasic.aop.TimeTraceAop;
 import yushin.yushinspringbasic.repository.*;
 import yushin.yushinspringbasic.service.MemberService;
 
@@ -28,6 +29,11 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository); // 생성자에 다른 빈을 넣어주어야 한다 -> 다른 빈의 생성자를 주입한다(Dependency Injection)
     }
+
+    //@Bean
+    //public TimeTraceAop timeTraceAop() {
+    //    return new TimeTraceAop();
+    //}     // 스프링 빈으로 등록해도 되고, 컴포넌트 스캔을 사용해도 된다
     
     //@Bean   // 스프링 빈 등록
     //public MemberRepository memberRepository() {    // MemberRepository 자체는 인터페이스이므로
